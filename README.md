@@ -1,7 +1,5 @@
 # TeachBack AI
 
-[English](./README.md) | [日本語](./README_ja.md)
-
 > 説明して、理解の穴を見つける。
 
 TeachBack AIは、AIに答えを教えてもらうのではなく、学習者がAIに説明することで理解の穴を見つける学習支援ツールです。
