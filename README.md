@@ -1,101 +1,101 @@
 # TeachBack AI
 
-> 説明して、理解の穴を見つける。
+> Explain it. Find the gaps in your understanding.
 
-TeachBack AIは、AIに答えを教えてもらうのではなく、学習者がAIに説明することで理解の穴を見つける学習支援ツールです。
+TeachBack AI is a learning support tool that helps learners identify gaps in their understanding by explaining a problem to AI, rather than asking AI to provide the answer.
 
-一般的な質問回答型AIは、素早く答えを得られる一方で、学習者が「分かったつもり」になりやすいという課題があります。この作品では、学習者自身が解き方を説明し、その説明に不足している条件・理由・結論を可視化します。
+Conventional question-answering AI can provide answers quickly, but learners may mistakenly feel that they understand a topic simply because they have read the answer. This project asks learners to explain how to solve a problem in their own words and visualizes missing conditions, reasoning, and conclusions.
 
-## この作品で解決したい課題
+## The Problem This Project Solves
 
-問題の答えや解説を見るだけでは、どこまで自分で説明できるのかを確認しにくく、理解があいまいなまま学習が進んでしまうことがあります。
+Simply reading an answer or explanation does not clearly show how much a learner can explain independently. As a result, they may continue studying while their understanding remains unclear.
 
-TeachBack AIでは、学習者が自分の言葉で問題を解説します。説明できなかった場所や前提が抜けている場所を復習ポイントとして扱い、「何が分からないのか分からない」状態から次の学習行動へ進めるように設計しました。
+With TeachBack AI, learners explain a problem in their own words. Parts they cannot explain and missing assumptions are treated as review points, helping learners move from "I do not know what I do not understand" to a clear next step.
 
-## この作品の特徴
+## Key Features
 
-### 1. 学習者を受け身にしない
+### 1. Keeps Learners Actively Involved
 
-答えを表示して終わるのではなく、学習者自身に解き方を説明してもらいます。説明が止まった場所や理由を言葉にできなかった場所を、次に復習すべきポイントとして扱います。
+Instead of displaying an answer and stopping there, TeachBack AI asks learners to explain the solution themselves. Parts where the explanation stops or the reasoning cannot be put into words become the next review points.
 
-### 2. フィードバック後の行動まで設計している
+### 2. Designs the Next Step After Feedback
 
-フィードバックでは、理解できている点だけでなく、あいまいな点、次に押さえること、具体的な勉強方法を表示します。「分からない」で止まらず、次に何をすればよいかまで確認できます。
+The feedback shows not only what the learner understands, but also unclear points, what to focus on next, and specific study methods. Learners do not stop at "I do not understand"; they can see what to do next.
 
-### 3. 教科ごとの学び方に対応している
+### 3. Adapts to How Each Subject Is Learned
 
-教科によって、説明するときに押さえるべき観点は異なります。TeachBack AIでは、教科ごとにフィードバックの観点を切り替えます。
+The key points of a good explanation differ by subject. TeachBack AI switches the feedback criteria for each subject.
 
-| 教科 | 確認する観点 | UIカラー |
+| Subject | Points to Check | UI Color |
 | --- | --- | --- |
-| 国語 | 本文の根拠と解釈 | 赤 |
-| 数学 | 条件・公式・式変形 | 青 |
-| 理科 | 原因・条件・結果 | 緑 |
-| 社会 | 背景・原因・影響 | 黄 |
-| 英語 | 主語・動詞・文構造 | ピンク |
+| Japanese | Textual evidence and interpretation | Red |
+| Mathematics | Conditions, formulas, and equation transformations | Blue |
+| Science | Causes, conditions, and results | Green |
+| Social Studies | Background, causes, and effects | Yellow |
+| English | Subjects, verbs, and sentence structure | Pink |
 
-科目を選ぶとUIカラーも変わり、現在の学習モードを視覚的に把握できます。
+The UI color also changes when a subject is selected, making the current study mode visually clear.
 
-### 4. アイデアを実際に触れる形まで実装している
+### 4. Turns the Idea Into a Usable Experience
 
-ブラウザだけで動作し、インストールは不要です。入力画面とフィードバック画面を分けた学習フロー、入力チェック、理解度、理解マップ、根拠語句、勉強プランまで実装しました。
+The app runs entirely in a browser and requires no installation. It includes a learning flow with separate input and feedback screens, input checks, an understanding score, an understanding map, evidence keywords, and a study plan.
 
-さらに、同じ学習支援の振る舞いをChatGPTでも試せるように、再利用可能なプロンプトも用意しています。
+A reusable prompt is also included so that the same learning support behavior can be tested with ChatGPT.
 
-## 利用フロー
+## How to Use
 
-1. 科目とフィードバックの返し方を選びます。
-2. 問題文と、自分なりの解説を入力します。
-3. `入力する` を押します。
-4. 理解度、理解マップ、理解できている点、あいまいな点、次に押さえること、勉強方法を確認します。
-5. 必要に応じて `入力に戻る` を押し、説明を書き直します。
+1. Select a subject and a feedback style.
+2. Enter the problem and your own explanation.
+3. Click `入力する` (`Submit`).
+4. Review the understanding score, understanding map, points you understand, unclear points, what to focus on next, and study methods.
+5. If needed, click `入力に戻る` (`Back to Input`) and revise your explanation.
 
-## 実装した機能
+## Implemented Features
 
-- 教科に応じて変化するテーマカラー
-- 教科ごとに異なるフィードバックの観点
-- 説明を書き始めやすくする `解説の型` テンプレート
-- 問題・条件・理由・結論がそろっているかを確認する入力チェック
-- 未入力時のエラー表示と入力欄へのフォーカス
-- 理解度スコアと理解マップの表示
-- フィードバックの根拠として扱った語句の表示
-- 次に取り組む勉強プランの表示
-- PC・タブレット・スマートフォン向けのレスポンシブ対応
-- インターネット接続なしで使えるオフライン動作
+- Theme colors that change depending on the selected subject
+- Subject-specific feedback criteria
+- An `解説の型` (`Explanation Template`) feature that helps learners start writing
+- Input checks for the problem, conditions, reasoning, and conclusion
+- Error messages and input focus when required fields are empty
+- Understanding score and understanding map
+- Keywords used as evidence for feedback
+- A study plan showing what to work on next
+- Responsive layouts for PCs, tablets, and smartphones
+- Offline use without an internet connection
 
-## 仕組みと現在地
+## How It Works and Its Current Scope
 
-現在のWebアプリ版は、生成AI APIや外部サーバーを使わないルールベースのプロトタイプです。ブラウザ内のJavaScriptで、入力された説明に条件・理由・結論・重要語句が含まれているかを分析し、教科に応じたフィードバックを組み立てます。
+The current web app is a rule-based prototype that does not use a generative AI API or an external server. JavaScript in the browser analyzes whether the learner's explanation includes conditions, reasoning, conclusions, and important keywords, then generates subject-specific feedback.
 
-入力内容は外部に送信されません。そのため、インターネット接続がない環境でも動作します。
+The entered content is not sent outside the browser. The app therefore works without an internet connection.
 
-この試作では、学習支援AIの体験設計を、まず触って確かめられる形にすることを重視しました。生成AIをWebアプリに直接搭載した完成版ではありませんが、APIを使わずに学習フローとフィードバック画面を検証できます。
+This prototype focuses on turning the learning support AI experience into something that can be tested interactively. It is not a completed web app with generative AI directly integrated, but it allows the learning flow and feedback screens to be tested without using an API.
 
-## ChatGPTへの展開
+## ChatGPT Version
 
-同じ学習支援の考え方を実際の生成AIでも試せるように、[CHATGPT_SKILL_PROMPT.md](./CHATGPT_SKILL_PROMPT.md) を用意しています。
+To test the same learning support concept with actual generative AI, this project also includes [CHATGPT_SKILL_PROMPT.md](./CHATGPT_SKILL_PROMPT.md).
 
-このプロンプトをChatGPTなどに設定すると、学習者の解説を受け取り、理解できている点、あいまいな点、前提のズレ、次に押さえること、具体的な勉強方法を返す学習コーチとして利用できます。
+When this prompt is configured in ChatGPT or a similar tool, the AI can act as a learning coach: it receives the learner's explanation and returns what the learner understands, unclear points, incorrect assumptions, what to focus on next, and specific study methods.
 
-Webアプリ版では画面体験を、プロンプト版では生成AIによる柔軟なフィードバックを試せる構成です。
+The web app version demonstrates the screen-based learning experience, while the prompt version demonstrates flexible feedback powered by generative AI.
 
-## 技術構成
+## Tech Stack
 
 - HTML
 - CSS
 - JavaScript
 
-フレームワークや外部ライブラリは使用していません。
+No frameworks or external libraries are used.
 
-## 起動方法
+## Getting Started
 
-1. このフォルダをダウンロードまたはコピーします。
-2. `index.html` をブラウザで開きます。
+1. Download or copy this folder.
+2. Open `index.html` in a browser.
 
-インストールやサーバー起動は不要です。他のパソコンでも、`study-feedback-ai` フォルダごとコピーすれば利用できます。
+No installation or server startup is required. The app can also be used on another computer by copying the entire `study-feedback-ai` folder.
 
-## 今後の拡張
+## Future Improvements
 
-- 学習履歴の保存と振り返り
-- 問題画像の入力
-- 教科ごとの判定精度の改善
+- Saving learning history for later review
+- Uploading images of problems
+- Improving subject-specific evaluation accuracy
