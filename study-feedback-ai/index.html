@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TeachBack AI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-subject="math">
+  <main class="app-shell">
+    <section class="workspace" aria-label="学習入力">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">T</span>
+          <div>
+            <p>TeachBack AI</p>
+            <h1>説明して、理解の穴を見つける</h1>
+          </div>
+        </div>
+        <div class="session-chip" aria-label="今日の日付">
+          <span id="todayLabel">Today</span>
+        </div>
+      </header>
+
+      <form id="feedbackForm" class="study-form">
+        <p class="form-error" id="formError" role="alert" aria-live="polite"></p>
+
+        <section class="settings-row" aria-label="判定設定">
+          <fieldset class="segmented">
+            <legend>科目</legend>
+            <label><input type="radio" name="subject" value="math" checked><span>数学</span></label>
+            <label><input type="radio" name="subject" value="science"><span>理科</span></label>
+            <label><input type="radio" name="subject" value="language"><span>国語</span></label>
+            <label><input type="radio" name="subject" value="social"><span>社会</span></label>
+            <label><input type="radio" name="subject" value="english"><span>英語</span></label>
+          </fieldset>
+
+          <fieldset class="segmented compact">
+            <legend>返し方</legend>
+            <label><input type="radio" name="tone" value="balanced" checked><span>標準</span></label>
+            <label><input type="radio" name="tone" value="strict"><span>厳しめ</span></label>
+            <label><input type="radio" name="tone" value="gentle"><span>やさしめ</span></label>
+          </fieldset>
+        </section>
+
+        <section class="support-row" aria-label="入力サポート">
+          <div class="checklist-panel">
+            <span class="check-chip" id="problemChip">問題</span>
+            <span class="check-chip" id="premiseChip">条件</span>
+            <span class="check-chip" id="reasonChip">理由</span>
+            <span class="check-chip" id="answerChip">結論</span>
+          </div>
+          <div class="actions">
+            <button class="ghost-button" type="button" id="templateButton">解説の型</button>
+            <button class="ghost-button" type="button" id="sampleButton">例を入れる</button>
+            <button class="primary-button" type="submit">入力する</button>
+          </div>
+        </section>
+
+        <section class="input-block">
+          <div class="block-head">
+            <label for="problem">問題</label>
+            <span id="problemCount">0文字</span>
+          </div>
+          <textarea id="problem" name="problem" rows="9" placeholder="問題文、図表の条件、選択肢などを貼り付け"></textarea>
+        </section>
+
+        <section class="input-block">
+          <div class="block-head">
+            <label for="explanation">あなたの解説</label>
+            <span id="explanationCount">0文字</span>
+          </div>
+          <textarea id="explanation" name="explanation" rows="12" placeholder="条件、理由、結論が伝わるように、自分の言葉で説明"></textarea>
+        </section>
+      </form>
+    </section>
+
+    <aside class="feedback-panel" aria-label="フィードバック">
+      <section class="result-topbar">
+        <div>
+          <p class="eyebrow">Feedback</p>
+          <h2>解説フィードバック</h2>
+        </div>
+        <button class="ghost-button" type="button" id="editButton">入力に戻る</button>
+      </section>
+
+      <section class="score-band">
+        <div>
+          <p class="eyebrow">Understanding</p>
+          <strong id="scoreValue">--</strong>
+        </div>
+        <div class="meter" aria-hidden="true">
+          <span id="scoreFill"></span>
+        </div>
+      </section>
+
+      <section class="map-panel" aria-label="理解マップ">
+        <div class="map-node active"><span>問題</span></div>
+        <div class="map-line"></div>
+        <div class="map-node" id="premiseNode"><span>条件</span></div>
+        <div class="map-line"></div>
+        <div class="map-node" id="reasonNode"><span>理由</span></div>
+        <div class="map-line"></div>
+        <div class="map-node" id="answerNode"><span>結論</span></div>
+      </section>
+
+      <section class="feedback-list">
+        <article>
+          <h2>理解できているところ</h2>
+          <ul id="strengthList">
+            <li>問題と解説を入力すると、ここに表示されます。</li>
+          </ul>
+        </article>
+        <article>
+          <h2>理解があいまいなところ</h2>
+          <ul id="gapList">
+            <li>説明の不足や、問題文とのズレを見ます。</li>
+          </ul>
+        </article>
+        <article>
+          <h2>次に押さえること</h2>
+          <ul id="nextList">
+            <li>解けるようになるための学習ポイントを出します。</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="evidence-box">
+        <h2>フィードバックの根拠</h2>
+        <div class="evidence-grid">
+          <div>
+            <h3>使えている語</h3>
+            <div class="term-cloud" id="usedTerms">まだありません</div>
+          </div>
+          <div>
+            <h3>確認したい語</h3>
+            <div class="term-cloud" id="missingTerms">まだありません</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="study-plan-box">
+        <h2>身につけるための勉強</h2>
+        <ul id="studyPlanList">
+          <li>問題と解説を入力すると、勉強の進め方を表示します。</li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
